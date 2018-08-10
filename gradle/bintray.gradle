@@ -29,7 +29,7 @@ bintray {
         websiteUrl = 'https://github.com/Kotlin/kotlinx.serialization'
         issueTrackerUrl = 'https://github.com/Kotlin/kotlinx.serialization/issues'
 
-        githubRepo = 'Kotlin/kotlinx.serialization'
+        githubRepo = 'ericmartineau/kotlinx.serialization'
         version {
             name = project.version
         }

@@ -15,7 +15,7 @@
  */
 
 buildscript {
-    def deployNative = property('native.deploy') == 'true'
+    def deployNative = property('native.deploy') == 'false'
 
     if (project.hasProperty("bootstrap")) {
         ext.compilerVersion = property('kotlin.version.snapshot')

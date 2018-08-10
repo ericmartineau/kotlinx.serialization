@@ -44,7 +44,17 @@ class JsonTreeParser internal constructor(private val p: Parser) {
 
     private fun readValue(isString: Boolean): JsonElement {
         val str = p.takeStr()
-        return JsonLiteral(str, isString)
+        return when (isString) {
+            true -> JsonLiteral(str, str)
+            else -> when (str) {
+                "true" -> JsonLiteral(true)
+                "false" -> JsonLiteral(false)
+                "null" -> JsonNull
+              else -> str.toIntOrNull()?.run { JsonLiteral(this, str) }
+                  ?: str.toDoubleOrNull()?.run { JsonLiteral(this, str) }
+                  ?: throw NumberFormatException("Unknown json value")
+            }
+        }
     }
 
     private fun readArray(): JsonElement {
