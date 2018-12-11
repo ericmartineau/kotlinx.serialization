@@ -15,8 +15,8 @@
  */
 
 bintray {
-    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.properties['BINTRAY_USER']
-    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.properties['BINTRAY_API_KEY']
+    user = System.getProperty('BINTRAY_USERNAME')
+    key = System.getProperty('BINTRAY_PASSWORD')
     publications = ['mavenProject']
     publish = false
     override = true
