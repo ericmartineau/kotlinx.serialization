@@ -163,15 +163,15 @@ sealed class JsonPrimitive(val literal: Any?) : JsonElement() {
    * Returns content of current element as boolean
    * @throws IllegalStateException if current element doesn't represent boolean
    */
-  val boolean: Boolean get() = literal as Boolean
+  val boolean: Boolean get() = booleanOrNull ?: throw IllegalStateException("Not a boolean")
 
   /**
    * Returns content of current element as boolean or `null` if current element is not a valid representation of boolean
    */
   override val booleanOrNull: Boolean? get() = literal as? Boolean
 
-  override val numberOrNull: Number? = literal as? Number
-  val number: Number = literal as Number
+  override val numberOrNull: Number? get() = literal as? Number
+  val number: Number get() = literal as? Number ?: throw NumberFormatException("Invalid number $contentOrNull")
 
   override fun toString() = content
 
