@@ -62,7 +62,8 @@ data class Event(
 )
 
 class JsonTreeAndMapperTest {
-    val inputData = """{"id":0,"payload":{"msg": "Hello world", "from": 42, "to": 43},"timestamp":1000}"""
+//    val inputData = """{"id":0,"payload":{"msg": "Hello world", "from": 42, "to": 43},"timestamp":1000}"""
+    val inputData = """{"id":0,"payload":{"from": 42, "to": 43, "msg": "Hello world"},"timestamp":1000}"""
     val inputError = """{"id":1,"payload":{"error": "Connection timed out"},"timestamp":1001}"""
 
     @Test

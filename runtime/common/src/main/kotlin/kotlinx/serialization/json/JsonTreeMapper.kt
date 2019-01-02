@@ -90,7 +90,7 @@ class JsonTreeMapper(val encodeDefaults: Boolean = true): AbstractSerialFormat()
 
     private open inner class JsonTreeOutput(nodeConsumer: (JsonElement) -> Unit) :
         AbstractJsonTreeOutput(nodeConsumer) {
-        private val map: MutableMap<String, JsonElement> = hashMapOf()
+        private val map: MutableMap<String, JsonElement> = linkedMapOf()
 
         override fun putElement(key: String, element: JsonElement) {
             map[key] = element
@@ -100,7 +100,7 @@ class JsonTreeMapper(val encodeDefaults: Boolean = true): AbstractSerialFormat()
     }
 
     private inner class JsonTreeMapOutput(nodeConsumer: (JsonElement) -> Unit) : JsonTreeOutput(nodeConsumer) {
-        private val mapBuilder: MutableMap<String, JsonElement> = hashMapOf()
+        private val mapBuilder: MutableMap<String, JsonElement> = linkedMapOf()
 
         private lateinit var tag: String
 
